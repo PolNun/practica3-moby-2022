@@ -1,0 +1,11 @@
+<div class="mb-1">
+  <label [for]="id" class="label-shape">{{inputConfig.labelText}}</label>
+  <input
+    [pattern]="inputConfig.regExpPattern"
+    [placeholder]="inputConfig.placeholderText"
+    [required]="inputConfig.isRequired"
+    [type]="inputConfig.inputType"
+    class="form-shape"
+    [id]="id">
+  <span class="form-text text-danger">{{alertText}}</span>
+</div>

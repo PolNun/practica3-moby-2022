@@ -2,5 +2,11 @@
   --main-color: #158B44;
   --secondary-color: #8BC546;
   --background-color: #333;
-  --white: #FFF;
+  --almost-white: #DDD;
+  --almost-black: #222;
+  --accent-color: #14A1B7;
+}
+
+body {
+  background-color: var(--almost-white);
 }

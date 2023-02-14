@@ -18,9 +18,9 @@ export class ButtonComponent {
   }
 
   @Input() color: string = '0068B4';
-  @Input() type: string = 'button';
+  @Input() buttonType: string = 'button';
   @Output() btnClick = new EventEmitter();
-  @Input() isDisabled = false;
+  @Input() isDisabled: boolean | null = false;
 
   constructor() {
   }
