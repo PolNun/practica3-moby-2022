@@ -1,0 +1,12 @@
+.btn-form {
+  background-color: var(--main-color);
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 9px;
+  color: var(--white);
+}
+
+.btn-form:hover {
+  background-color: var(--secondary-color);
+}
