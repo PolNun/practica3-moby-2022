@@ -38,8 +38,8 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: ({header, data}: AuthAPIResponse) => {
           if (header.resultCode === 0) {
-            this.isLoggedIn = true;
-            this.redirectUser(this.isLoggedIn, data.user.name);
+            this.redirectUser(data.user.name);
+            this.authApiService.auth = data.user;
           } else {
             this.alertMessage = ResultCodeOpts.getMsg(header.resultCode)
           }
@@ -50,11 +50,9 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  private redirectUser(userAuthorized: boolean, userName: string): void {
-    if (userAuthorized) {
-      localStorage.setItem("currentUser", JSON.stringify({name: userName}));
-      this.router.navigate(["/personajes"]);
-    }
+  private redirectUser(userName: string): void {
+    localStorage.setItem("currentUser", JSON.stringify({name: userName}));
+    this.router.navigate(["/personajes"]);
   }
 
   public getEmailFromSessionStorage(): string {

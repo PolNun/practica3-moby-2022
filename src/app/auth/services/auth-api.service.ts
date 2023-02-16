@@ -16,7 +16,11 @@ export class AuthApiService {
   private _auth: User | undefined;
 
   get auth(): User | undefined {
-    return this._auth;
+    return {...this._auth!};
+  }
+
+  set auth(user: User | undefined) {
+    this._auth = user;
   }
 
   constructor(private http: HttpClient,
