@@ -1,13 +1,39 @@
 <app-authheader-content></app-authheader-content>
 <div class="row d-flex justify-content-center">
-  <div class="col-6">
+  <div class="col-sm-6 col-12">
     <form #loginForm="ngForm">
-      <div class="mb-2" *ngFor="let input of loginInputs">
-        <app-input [inputConfig]="input"></app-input>
+      <div class="mb-2">
+        <label for="inputEmail">Correo electrónico</label>
+        <input [(ngModel)]="loginUser.mail"
+               [pattern]="regexEmail"
+               class="form-control"
+               id="inputEmail"
+               name="email"
+               placeholder="correo@ejemplo.com"
+               required
+               type="email">
+      </div>
+      <div class="mb-3">
+        <label for="inputPassword">Contraseña</label>
+        <input [(ngModel)]="loginUser.password"
+               class="form-control"
+               id="inputPassword"
+               [pattern]="regexPassword"
+               name="password"
+               placeholder="Contraseña"
+               required
+               type="password">
       </div>
       <app-button buttonType="submit"
                   text="iniciar sesión"
-                  [isDisabled]="loginForm.invalid"></app-button>
+                  [isDisabled]="loginForm.invalid"
+                  (btnClick)="login(loginUser)">
+      </app-button>
+      <span class="form-text text-danger">{{alertMessage}}</span>
+      <div class="mt-2 d-flex justify-content-between">
+        <a routerLink="/autenticacion/registro" class="text-success">¿No tenés cuenta? Registrate</a>
+        <a routerLink="/autenticacion/recuperar-contrasena" class="text-success">¿Olvidaste tu contraseña?</a>
+      </div>
     </form>
   </div>
 </div>

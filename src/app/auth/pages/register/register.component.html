@@ -1,1 +1,87 @@
-<p>register works!</p>
+<app-authheader-content></app-authheader-content>
+<div class="row d-flex justify-content-center">
+  <div class="col-sm-6 col-12">
+    <form #registerForm="ngForm">
+      <div class="mb-2">
+        <label for="inputUsername">Nombre de usuario</label>
+        <input [(ngModel)]="registerUser.username"
+               [pattern]="regexEmail"
+               class="form-control"
+               id="inputUsername"
+               name="username"
+               placeholder="correo@ejemplo.com"
+               required
+               type="text">
+        <span *ngIf="!regexUsername.test(registerUser.username) && registerUser.username.length > 0"
+              class="form-text text-danger">
+          <small>El nombre de usuario debe contener de 5 a 15 caracteres, guiones y/o números</small>
+        </span>
+
+      </div>
+
+      <div class="mb-2">
+        <label for="inputEmail">Correo electrónico</label>
+        <input [(ngModel)]="registerUser.mail"
+               [pattern]="regexEmail"
+               class="form-control"
+               id="inputEmail"
+               name="email"
+               placeholder="correo@ejemplo.com"
+               required
+               type="email">
+        <span *ngIf="!regexEmail.test(registerUser.mail) && registerUser.mail.length > 0"
+              class="form-text text-danger">
+          <small>Correo electrónico inválido</small>
+        </span>
+
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-12 mb-3">
+          <label for="inputPassword">Contraseña</label>
+          <input [(ngModel)]="registerUser.password"
+                 class="form-control"
+                 id="inputPassword"
+                 [pattern]="regexPassword"
+                 name="password"
+                 placeholder="Contraseña"
+                 required
+                 type="password">
+          <span *ngIf="!regexPassword.test(registerUser.password) && registerUser.password.length > 0"
+                class="form-text text-danger">
+          <small>La contraseña debe tener un mínimo de 8 caracteres</small>
+        </span>
+        </div>
+
+        <div class="col-md-6 col-12 mb-3">
+          <label for="inputPasswordConfirm">Repetir contraseña</label>
+          <input ngModel
+                 class="form-control"
+                 id="inputPasswordConfirm"
+                 [pattern]="regexPassword"
+                 name="password"
+                 placeholder="Contraseña"
+                 required
+                 #passwordConfirm="ngModel"
+                 type="password">
+          <span *ngIf="registerUser.password !== passwordConfirm.value && passwordConfirm.value.length > 0"
+                class="form-text text-danger">
+          <small>Las contraseñas no coinciden</small>
+        </span>
+        </div>
+      </div>
+      <app-button buttonType="submit"
+                  text="Registrarse"
+                  [isDisabled]="registerForm.invalid"
+                  (btnClick)="register(registerUser)">
+      </app-button>
+      <span class="form-text text-danger">{{alertMessage}}</span>
+      <div class="mt-2 d-flex justify-content-between">
+        <a routerLink="/autenticacion/registro" class="text-success">¿Ya tenés cuenta? Ingresá</a>
+        <a href="https://es.wikipedia.org/wiki/Rick_y_Morty" target="_blank" class="text-success">¿Rick y Morty?</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<pre>{{registerForm.invalid | json}}</pre>
+<pre>{{registerUser | json}}</pre>

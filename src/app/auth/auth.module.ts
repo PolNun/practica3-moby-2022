@@ -5,9 +5,9 @@ import {SharedModule} from "../shared/shared.module";
 import {AuthRoutingModule} from './auth-routing.module';
 import {LoginComponent} from './pages/login/login.component';
 import {RegisterComponent} from './pages/register/register.component';
-import {AuthHeaderContent} from './components/side-content/auth-header-content.component';
+import {AuthHeaderContent} from './components/auth-header/auth-header-content.component';
 import {ButtonComponent} from './components/button/button.component';
-import {InputComponent} from './components/input/input.component';
+import { RecoverPasswordComponent } from './pages/recover-password/recover-password.component';
 
 
 @NgModule({
@@ -16,7 +16,7 @@ import {InputComponent} from './components/input/input.component';
     RegisterComponent,
     AuthHeaderContent,
     ButtonComponent,
-    InputComponent
+    RecoverPasswordComponent
   ],
   exports: [
     ButtonComponent

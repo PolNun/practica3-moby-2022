@@ -13,3 +13,15 @@
   cursor: pointer;
   color: var(--accent-color);
 }
+
+.disabled {
+  background-color: var(--disabled-color);
+  color: var(--disabled-text-color);
+  cursor: not-allowed;
+}
+
+.disabled:hover {
+  background-color: var(--disabled-color);
+  color: var(--disabled-text-color);
+  cursor: not-allowed;
+}

@@ -2,6 +2,7 @@
   [type]="buttonType"
   (click)="onClick()"
   [disabled]="isDisabled"
+  [ngClass]="{ 'disabled': isDisabled }"
   class="btn-form">
   <span>{{buttonText}}</span>
 </button>

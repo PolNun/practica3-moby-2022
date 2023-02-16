@@ -2,7 +2,8 @@ export interface InputConfig {
   labelText: string;
   inputType: string;
   placeholderText: string;
+  name: string;
   alertText: string;
   isRequired: boolean;
-  regExpPattern: RegExp | null;
+  regExpPattern: RegExp | string;
 }

@@ -5,6 +5,8 @@
   --almost-white: #DDD;
   --almost-black: #222;
   --accent-color: #14A1B7;
+  --disabled-color: #AAA;
+  --disabled-text-color: #666;
 }
 
 body {
