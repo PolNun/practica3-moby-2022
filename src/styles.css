@@ -1,3 +1,11 @@
+/* block hecho con propósito de debugging
+* {
+  background: #000 !important;
+  color: #0f0 !important;
+  outline: solid #f00 1px !important;
+}
+*/
+
 :root {
   --main-color: #158B44;
   --secondary-color: #8BC546;

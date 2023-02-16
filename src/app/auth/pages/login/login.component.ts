@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LoginUser} from "../../models/login-user.interface";
 import {AuthApiService} from "../../services/auth-api.service";
 import {Router} from "@angular/router";
@@ -11,12 +11,13 @@ import {ResultCodeOpts} from "../../models/ResultCodeOpts";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   public regexEmail: RegExp = /^[a-zA-Z0-9._-]{3,50}@[a-zA-Z0-9.-]{3,50}\.[a-zA-Z]{2,4}$/;
   public regexPassword: RegExp = /[a-zA-Z\d]{8,30}$/;
   public alertMessage: string = '';
   public isLoggedIn: boolean = false;
+  private emailFromRegister: string = '';
 
   public loginUser: LoginUser = {
     mail: '',
@@ -25,6 +26,11 @@ export class LoginComponent {
 
   constructor(private authApiService: AuthApiService,
               private router: Router) {
+  }
+
+  ngOnInit(): void {
+    this.emailFromRegister = this.getEmailFromSessionStorage();
+    this.loginUser.mail = this.emailFromRegister;
   }
 
   login(loginUser: LoginUser) {
@@ -49,5 +55,9 @@ export class LoginComponent {
       localStorage.setItem("currentUser", JSON.stringify({name: userName}));
       this.router.navigate(["/personajes"]);
     }
+  }
+
+  public getEmailFromSessionStorage(): string {
+    return sessionStorage.getItem('email') || '';
   }
 }

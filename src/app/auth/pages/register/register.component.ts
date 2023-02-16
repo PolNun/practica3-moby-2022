@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {RegisterUser} from "../../models/register-user.interface";
 import {AuthAPIResponse} from "../../interfaces/auth-api-response.interface";
 import {ResultCodeOpts} from "../../models/ResultCodeOpts";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,7 @@ export class RegisterComponent {
   public regexPassword: RegExp = /[a-zA-Z\d]{8,30}$/;
   public alertMessage: string = '';
   public registerUser: RegisterUser = {
-    username: '',
+    name: '',
     mail: '',
     password: ''
   };
@@ -35,13 +36,15 @@ export class RegisterComponent {
             this.alertMessage = ResultCodeOpts.getMsg(response.header.resultCode);
           }
         },
-        error: (err) => {
-          console.log(err);
+        error: ({error}: HttpErrorResponse) => {
+          this.alertMessage = ResultCodeOpts.getMsg(error.header.resultCode);
+          console.log(error)
         }
       });
   }
 
   private redirectUserToLogin(): void {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/autenticacion/login']);
+    sessionStorage.setItem('email', this.registerUser.mail);
   }
 }
