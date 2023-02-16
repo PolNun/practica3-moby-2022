@@ -9,7 +9,7 @@
                class="form-control"
                id="inputUsername"
                name="username"
-               placeholder="correo@ejemplo.com"
+               placeholder="usuario_ejemplo"
                required
                type="text">
         <span *ngIf="!regexUsername.test(registerUser.username) && registerUser.username.length > 0"
@@ -63,10 +63,10 @@
                  required
                  #passwordConfirm="ngModel"
                  type="password">
-          <span *ngIf="registerUser.password !== passwordConfirm.value && passwordConfirm.value.length > 0"
-                class="form-text text-danger">
-          <small>Las contraseñas no coinciden</small>
-        </span>
+<!--          <span *ngIf="registerUser.password !== passwordConfirm.value && passwordConfirm.value.length > 0"-->
+<!--                class="form-text text-danger">-->
+<!--          <small>Las contraseñas no coinciden</small>-->
+<!--        </span>-->
         </div>
       </div>
       <app-button buttonType="submit"
@@ -76,7 +76,7 @@
       </app-button>
       <span class="form-text text-danger">{{alertMessage}}</span>
       <div class="mt-2 d-flex justify-content-between">
-        <a routerLink="/autenticacion/registro" class="text-success">¿Ya tenés cuenta? Ingresá</a>
+        <a routerLink="/autenticacion/login" class="text-success">¿Ya tenés cuenta? Ingresá</a>
         <a href="https://es.wikipedia.org/wiki/Rick_y_Morty" target="_blank" class="text-success">¿Rick y Morty?</a>
       </div>
     </form>

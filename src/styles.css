@@ -12,3 +12,7 @@
 body {
   background-color: var(--almost-white);
 }
+
+label {
+  font-size: 14px;
+}

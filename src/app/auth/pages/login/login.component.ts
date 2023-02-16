@@ -4,6 +4,7 @@ import {AuthApiService} from "../../services/auth-api.service";
 import {Router} from "@angular/router";
 import {AuthAPIResponse} from "../../interfaces/auth-api-response.interface";
 import {HttpErrorResponse} from "@angular/common/http";
+import {ResultCodeOpts} from "../../models/ResultCodeOpts";
 
 @Component({
   selector: 'app-login',
@@ -34,56 +35,13 @@ export class LoginComponent {
             this.isLoggedIn = true;
             this.redirectUser(this.isLoggedIn, data.user.name);
           } else {
-            this.alertMessage = this.resultCodeMessage(header.resultCode);
+            this.alertMessage = ResultCodeOpts.getMsg(header.resultCode)
           }
         },
         error: ({error}: HttpErrorResponse) => {
-          this.alertMessage = this.resultCodeMessage(error.header.resultCode);
+          this.alertMessage = ResultCodeOpts.getMsg(error.header.resultCode)
         }
       });
-  }
-
-  resultCodeMessage(resultCode: number): string {
-    // TODO acomodar este método dejando únicamente los case útiles para login
-    let message: string;
-    switch (resultCode) {
-      case 1:
-        message = "Mail ya registrado";
-        break;
-      case 2:
-        message = "Error en la validación";
-        break;
-      case 3:
-        message = "Usuario no encontrado";
-        break;
-      case 4:
-        message = "Contraseña inválida";
-        break;
-      case 5:
-        message = "No autorizado";
-        break;
-      case 6:
-        message = "No modificado";
-        break;
-      case 7:
-        message = "Usuario desactivado";
-        break;
-      case 8:
-        message = "Tiempo de modificación expirado";
-        break;
-      case 9:
-        message = "Error desconocido";
-        break;
-      case 10:
-        message = "Post no encontrado";
-        break;
-      case 11:
-        message = "Comentario no encontrado";
-        break;
-      default:
-        message = "Revisá los campos";
-    }
-    return message;
   }
 
   private redirectUser(userAuthorized: boolean, userName: string): void {
