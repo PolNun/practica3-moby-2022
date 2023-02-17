@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
   public regexEmail: RegExp = /^[a-zA-Z0-9._-]{3,50}@[a-zA-Z0-9.-]{3,50}\.[a-zA-Z]{2,4}$/;
   public regexPassword: RegExp = /[a-zA-Z\d]{8,30}$/;
   public alertMessage: string = '';
-  public isLoggedIn: boolean = false;
   private emailFromRegister: string = '';
 
   public loginUser: LoginUser = {
@@ -33,29 +32,29 @@ export class LoginComponent implements OnInit {
     this.loginUser.mail = this.emailFromRegister;
   }
 
-  login(loginUser: LoginUser) {
+  public login(loginUser: LoginUser) {
     this.authApiService.login(loginUser)
       .subscribe({
-        next: ({header, data}: AuthAPIResponse) => {
-          if (header.resultCode === 0) {
-            this.redirectUser(data.user.name);
-            this.authApiService.auth = data.user;
-          } else {
-            this.alertMessage = ResultCodeOpts.getMsg(header.resultCode)
+          next: ({header, data}: AuthAPIResponse) => {
+            if (header.resultCode === 0) {
+              this.redirectUser();
+              this.authApiService.auth = data.user;
+            } else {
+              this.alertMessage = ResultCodeOpts.getMsg(header.resultCode);
+            }
+          },
+          error: ({error}: HttpErrorResponse) => {
+            this.alertMessage = ResultCodeOpts.getMsg(error.header.resultCode);
           }
-        },
-        error: ({error}: HttpErrorResponse) => {
-          this.alertMessage = ResultCodeOpts.getMsg(error.header.resultCode)
         }
-      });
+      );
   }
 
-  private redirectUser(userName: string): void {
-    localStorage.setItem("currentUser", JSON.stringify({name: userName}));
+  private redirectUser(): void {
     this.router.navigate(["/personajes"]);
   }
 
-  public getEmailFromSessionStorage(): string {
+  private getEmailFromSessionStorage(): string {
     return sessionStorage.getItem('email') || '';
   }
 }

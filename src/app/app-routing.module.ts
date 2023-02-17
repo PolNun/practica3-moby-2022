@@ -27,12 +27,8 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard]
   },
   {
-    path: '404',
-    component: Error404Component
-  },
-  {
     path: '**',
-    redirectTo: '404'
+    redirectTo: 'autenticacion'
   }
 ];
 

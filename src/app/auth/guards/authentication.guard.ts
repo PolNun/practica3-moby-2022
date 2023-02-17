@@ -1,6 +1,14 @@
 import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, CanMatch, Route, RouterStateSnapshot, UrlSegment} from '@angular/router';
-import {Observable} from 'rxjs';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  CanMatch,
+  Route,
+  Router,
+  RouterStateSnapshot,
+  UrlSegment
+} from '@angular/router';
+import {Observable, tap} from 'rxjs';
 import {AuthApiService} from "../services/auth-api.service";
 
 @Injectable({
@@ -8,24 +16,42 @@ import {AuthApiService} from "../services/auth-api.service";
 })
 export class AuthenticationGuard implements CanActivate, CanMatch {
 
-  constructor(private authApiService: AuthApiService) {
+  constructor(private authApiService: AuthApiService,
+              private router: Router) {
   }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.authApiService.auth?.id) {
-      return true;
-    }
-    return true;
+    return this.authApiService.verifyAuth()
+      .pipe(
+        tap({
+          next: (isAuth: boolean) => {
+            if (!isAuth) {
+              this.router.navigate(['/auth/login']);
+            } else {
+              localStorage.setItem("currentUser", JSON.stringify(this.authApiService.auth));
+            }
+          },
+          error: (error) => {
+            console.log(error);
+          }
+        })
+      );
   }
 
   canMatch(
     route: Route,
     segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.authApiService.auth?.id) {
-      return true;
-    }
-    return false;
+    return this.authApiService.verifyAuth()
+      .pipe(
+        tap({
+          next: (isAuth: boolean) => {
+            if (!isAuth) {
+              this.router.navigate(['/auth/login']);
+            }
+          }
+        })
+      );
   }
 }
