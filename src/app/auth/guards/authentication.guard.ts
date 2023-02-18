@@ -32,9 +32,6 @@ export class AuthenticationGuard implements CanActivate, CanMatch {
             } else {
               localStorage.setItem("currentUser", JSON.stringify(this.authApiService.auth));
             }
-          },
-          error: (error) => {
-            console.log(error);
           }
         })
       );

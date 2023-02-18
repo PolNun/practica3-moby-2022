@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Output} from '@angular/core';
+import {Navbar} from "../../../shared/interfaces/navbar.interface";
 
 @Component({
   selector: 'app-characters-list',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./characters-list.component.css']
 })
 export class CharactersListComponent {
+  // public navbarData: Navbar = {
+  //   contentTitle: 'personajes',
+  //   contentListing: 'listado de personajes',
+  //   contentListingLink: '/personajes/listado',
+  //   contentSearching: 'buscar personajes',
+  //   contentSearchingLink: '/personajes/buscar'
+  // };
+
+  constructor() {
+  }
+
 
 }

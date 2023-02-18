@@ -5,6 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import { Error404Component } from './error404/error404.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { Error404Component } from './error404/error404.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

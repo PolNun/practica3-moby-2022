@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {CardTemplateComponent} from './components/card-template/card-template.component';
 import {DetailsTemplateComponent} from './components/details-template/details-template.component';
+import {RouterLink, RouterOutlet} from "@angular/router";
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import {DetailsTemplateComponent} from './components/details-template/details-te
     DetailsTemplateComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterLink,
+    RouterOutlet
   ]
 })
 export class SharedModule { }
