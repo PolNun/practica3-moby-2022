@@ -1,8 +1,5 @@
-export interface Navbar {
+export interface NavbarContent {
   contentTitle: string;
-  contentListing: string;
-  contentSearching: string;
   contentListingLink: string;
   contentSearchingLink: string;
-
 }
