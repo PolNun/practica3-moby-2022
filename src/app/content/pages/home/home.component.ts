@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {NavbarContentInterface} from "../../interfaces/navbar-content.interface";
+import {NavbarContentInterface} from "../../../shared/interfaces/navbar-content.interface";
 import {NavbarContent} from "../../../shared/models/NavbarContent";
 
 @Component({

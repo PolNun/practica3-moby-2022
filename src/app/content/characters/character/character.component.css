@@ -1,0 +1,30 @@
+table {
+  width: 100%;
+  border: 1px solid var(--almost-black);
+}
+
+tr:nth-child(even) {
+  background-color: #BBB;
+}
+
+th {
+  background-color: var(--almost-black);
+  color: white;
+}
+
+td {
+  padding: 5px;
+  width: 60%;
+}
+
+.character-icon {
+  border-radius: 50%;
+  border: 5px solid var(--almost-white);
+  box-shadow: 0 0 15px var(--main-color);
+}
+
+@media (max-width: 768px) {
+  .character-icon {
+    width: 150px;
+  }
+}

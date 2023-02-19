@@ -1,4 +1,4 @@
-import {NavbarContentInterface} from "../../content/interfaces/navbar-content.interface";
+import {NavbarContentInterface} from "../interfaces/navbar-content.interface";
 // Esta clase sirve el contenido estático de la barra de navegación
 export class NavbarContent {
 

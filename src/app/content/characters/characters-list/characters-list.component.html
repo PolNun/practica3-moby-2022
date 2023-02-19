@@ -1,0 +1,10 @@
+<h1>{{"Listado de personajes" | uppercase}}</h1>
+<div class="d-flex justify-content-center flex-wrap mb-5">
+  <app-card-template *ngFor="let character of characters;"
+                     [cardImgSrc]="character.image"
+                     [cardText]="character.name"
+                     [cardImgAlt]="character.name"
+                     [cardImgTitle]="character.name"
+                     detailsLink="{{'/contenido/personajes/detalles/' + character.id}}">
+  </app-card-template>
+</div>

@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./details-template.component.css']
 })
 export class DetailsTemplateComponent {
-
 }

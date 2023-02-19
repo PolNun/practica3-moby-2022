@@ -1,0 +1,42 @@
+<div class="container mt-4 mb-5" *ngIf="character">
+  <div class="row">
+    <div class="col-12 d-flex align-items-center flex-column">
+      <h1>{{character.name}}</h1>
+      <picture class="mt-1 mb-3">
+        <img class="character-icon" src="{{character.image}}" alt="{{character.name}}" title="{{character.name}}">
+      </picture>
+      <h3>Ubicación</h3>
+      <p>{{character.location.name}}</p>
+    </div>
+    <div class="col-12">
+      <table class="table">
+        <tbody>
+        <tr>
+          <th scope="row">Estado</th>
+          <td>{{character.status === 'Alive' ? 'Vivo' : 'Muerto'}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Género</th>
+          <td>{{mapGender[character.gender]}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Especie</th>
+          <td>{{character.species}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Origen</th>
+          <td>{{character.origin.name}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Cantidad de episodios</th>
+          <td>{{character.episode.length}}</td>
+        </tr>
+        <tr *ngIf="episode">
+          <th>Primer episodio</th>
+          <td>{{episode.name}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

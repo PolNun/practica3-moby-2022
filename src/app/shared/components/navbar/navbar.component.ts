@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {User} from "../../../auth/interfaces/auth-api-response.interface";
 import {Router} from "@angular/router";
 import {AuthApiService} from "../../../auth/services/auth-api.service";
-import {LinksBody} from "../../../content/interfaces/navbar-content.interface";
+import {LinksBody} from "../../interfaces/navbar-content.interface";
 import {NavbarContent} from "../../models/NavbarContent";
 
 @Component({

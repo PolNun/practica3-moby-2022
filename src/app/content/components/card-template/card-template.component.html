@@ -1,1 +1,6 @@
-<p>card-template works!</p>
+<div class="card m-2" style="width: 220px;" (click)="onClick()" [routerLink]="detailsLink">
+  <img [src]="cardImgSrc" [hidden]="isHidden" class="card-img-top" [alt]="cardImgAlt" [title]="cardImgTitle">
+  <div class="card-body">
+    <p class="card-text fw-bold">{{cardText}}</p>
+  </div>
+</div>

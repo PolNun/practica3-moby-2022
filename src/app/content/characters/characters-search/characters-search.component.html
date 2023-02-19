@@ -1,0 +1,28 @@
+<h1>{{"Buscar personajes" | uppercase}}</h1>
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <label class="visually-hidden" for="autoSizingInputGroup">Buscar personaje</label>
+      <div class="input-group">
+        <div class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <input #searchInput type="text" class="form-control" id="autoSizingInputGroup"
+               placeholder="Nombre del personaje">
+      </div>
+      <button class="btn btn-success mt-2"
+              type="button"
+              (click)="searchCharacters(searchInput.value)">
+        Buscar
+      </button>
+    </div>
+    <div class="col-12 d-flex justify-content-center flex-wrap mb-5">
+      <app-card-template *ngFor="let character of characters;"
+                         [cardImgSrc]="character.image"
+                         [cardText]="character.name"
+                         [cardImgAlt]="character.name"
+                         [cardImgTitle]="character.name"
+                         detailsLink="{{characterLink + character.id}}">
+      </app-card-template>
+      <span class="text-secondary" *ngIf="characters.length === 0">Probá buscando "Rick".</span>
+    </div>
+  </div>
+</div>
