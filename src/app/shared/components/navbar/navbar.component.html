@@ -26,7 +26,10 @@
             </a>
             <ul class="dropdown-menu">
               <li class="nav-item" *ngFor="let link of dropdownLinks;">
-                <a class="nav-link" (click)="redirectToView(link.link)">{{link.text | titlecase}}</a>
+                <a class="nav-link"
+                   [routerLink]="link.link"
+                   (click)="updateNavbar(link.text)"
+                >{{link.text | titlecase}}</a>
               </li>
             </ul>
           </li>
@@ -42,3 +45,7 @@
     </div>
   </nav>
 </header>
+<!--<app-waning-modal modalText="Para cambiar de vista es necesario recargar la página."-->
+<!--                  modalOpt1="Cancelar"-->
+<!--                  modalOpt2="Continuar"-->
+<!--                  (btnClick)=""></app-waning-modal>-->

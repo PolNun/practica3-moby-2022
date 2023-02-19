@@ -3,7 +3,7 @@ export interface LinksBody {
   text: string;
 }
 
-export interface NavbarContent {
+export interface NavbarContentInterface {
   contentTitle: string;
   contentListingLink: string;
   contentSearchingLink: string;
