@@ -20,6 +20,16 @@
               Buscar
             </a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{contentTitle | titlecase}}
+            </a>
+            <ul class="dropdown-menu">
+              <li class="nav-item" *ngFor="let link of dropdownLinks;">
+                <a class="nav-link" (click)="redirectToView(link.link)">{{link.text | titlecase}}</a>
+              </li>
+            </ul>
+          </li>
         </ul>
         <div class="m-auto">
           <span class="nav-item fw-bold">Estás viendo: {{contentTitle | titlecase}}</span>

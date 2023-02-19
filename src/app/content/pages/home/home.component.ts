@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {NavbarContent} from "../../interfaces/navbar-content.interface";
 
@@ -7,25 +7,37 @@ import {NavbarContent} from "../../interfaces/navbar-content.interface";
   templateUrl: './home.component.html',
   styles: []
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   public navbarContent!: NavbarContent;
 
   public navbarContentCharacters: NavbarContent = {
     contentTitle: "personajes",
     contentListingLink: "/contenido/personajes/listado",
-    contentSearchingLink: "/contenido/personajes/buscar"
+    contentSearchingLink: "/contenido/personajes/buscar",
+    dropdownLinks: [
+      {link: "/contenido/episodios/listado", text: "episodios"},
+      {link: "/contenido/ubicaciones/listado", text: "ubicaciones"}
+    ]
   }
 
   public navbarContentEpisodes: NavbarContent = {
     contentTitle: "episodios",
     contentListingLink: "/contenido/episodios/listado",
-    contentSearchingLink: "/contenido/episodios/buscar"
+    contentSearchingLink: "/contenido/episodios/buscar",
+    dropdownLinks: [
+      {link: "/contenido/personajes/listado", text: "personajes"},
+      {link: "/contenido/ubicaciones/listado", text: "ubicaciones"}
+    ]
   }
 
   public navbarContentLocations: NavbarContent = {
     contentTitle: "ubicaciones",
     contentListingLink: "/contenido/ubicaciones/listado",
-    contentSearchingLink: "/contenido/ubicaciones/buscar"
+    contentSearchingLink: "/contenido/ubicaciones/buscar",
+    dropdownLinks: [
+      {link: "/contenido/personajes/listado", text: "personajes"},
+      {link: "/contenido/episodios/listado", text: "episodios"}
+    ]
   }
 
   constructor(private router: Router) {
