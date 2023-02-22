@@ -5,13 +5,14 @@ import {map, Observable, of, tap} from "rxjs";
 import {AuthAPIResponse, User} from "../interfaces/auth-api-response.interface";
 import {RegisterUser} from "../models/register-user.interface";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthApiService {
 
-  private API_URL = 'https://api-auth-moby.herokuapp.com/api/user';
+  private API_URL = environment.authApi.baseUrl;
 
   private _auth: User | undefined;
 

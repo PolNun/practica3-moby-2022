@@ -1,0 +1,11 @@
+### GET episodes
+GET https://rickandmortyapi.com/api/episode
+Accept: application/json
+
+### GET character
+GET https://rickandmortyapi.com/api/character
+Accept: application/json
+
+### GET location
+GET https://rickandmortyapi.com/api/location
+Accept: application/json
