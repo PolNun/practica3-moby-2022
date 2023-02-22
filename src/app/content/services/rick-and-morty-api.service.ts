@@ -3,12 +3,13 @@ import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
 import {Character, CharactersInfo} from "../interfaces/character.interface";
 import {Episode} from "../interfaces/episode.interface";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RickAndMortyAPIService {
-  private readonly BASE_URL: string = 'https://rickandmortyapi.com/api';
+  private readonly BASE_URL: string = environment.rickAndMortyApi.baseUrl;
 
   constructor(private http: HttpClient) {
   }
