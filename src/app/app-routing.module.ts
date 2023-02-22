@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthenticationGuard} from "./auth/guards/authentication.guard";
-import {Error404Component} from "./error404/error404.component";
 
 const routes: Routes = [
   {
@@ -16,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: Error404Component
+    redirectTo: 'autenticacion'
   }
 ];
 

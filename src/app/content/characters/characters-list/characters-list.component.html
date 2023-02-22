@@ -8,3 +8,10 @@
                      detailsLink="{{'/contenido/personajes/detalles/' + character.id}}">
   </app-card-template>
 </div>
+<div class="d-flex justify-content-center">
+  <app-pagination
+    [totalPages]="totalPages"
+    [currentPage]="currentPage"
+    (pageChanged)="pageChanged($event)">
+  </app-pagination>
+</div>

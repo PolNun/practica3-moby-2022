@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {RegisterComponent} from "./pages/register/register.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {RecoverPasswordComponent} from "./pages/recover-password/recover-password.component";
+import {Error404Component} from "../error404/error404.component";
 
 const routes: Routes = [
   {

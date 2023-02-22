@@ -15,6 +15,7 @@ import {LocationComponent} from './locations/location/location.component';
 import {CharactersListComponent} from './characters/characters-list/characters-list.component';
 import {CharacterComponent} from './characters/character/character.component';
 import {CharactersSearchComponent} from './characters/characters-search/characters-search.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {CharactersSearchComponent} from './characters/characters-search/characte
     LocationComponent,
     CharactersListComponent,
     CharacterComponent,
-    CharactersSearchComponent
+    CharactersSearchComponent,
+    PaginationComponent
   ],
   exports: [],
   imports: [

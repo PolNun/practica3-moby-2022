@@ -10,7 +10,9 @@ import {Character} from "../../interfaces/character.interface";
 })
 export class CharactersListComponent implements OnInit {
   public characters: Character[] = [];
-  characterLink: string = '/contenido/personajes/detalles/';
+  public totalPages: number = 0;
+  public currentPage: number = 0;
+  public pages: number[] = [];
 
   constructor(private rickAndMortyAPIService: RickAndMortyAPIService,
               private router: Router) {
@@ -24,5 +26,17 @@ export class CharactersListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCharacters();
+  }
+
+  pageChanged($event: any) {
+    this.rickAndMortyAPIService.getCharacters($event).subscribe({
+        next: (response: any) => {
+          this.characters = response;
+        },
+        error: (error: any) => {
+          console.log(error);
+        }
+      }
+    );
   }
 }

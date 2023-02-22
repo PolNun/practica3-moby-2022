@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
   }
 
   private redirectUser(): void {
-    this.router.navigate(["/contenido"]);
+    this.router.navigate(["/contenido/personajes/listado"]);
   }
 
   private getEmailFromSessionStorage(): string {
