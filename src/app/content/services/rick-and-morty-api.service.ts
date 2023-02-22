@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
-import {Character} from "../interfaces/character.interface";
+import {Character, CharactersInfo} from "../interfaces/character.interface";
 import {Episode} from "../interfaces/episode.interface";
 
 @Injectable({
@@ -13,21 +13,11 @@ export class RickAndMortyAPIService {
   constructor(private http: HttpClient) {
   }
 
-  getCharacters(query?: string): Observable<any> {
+  getCharacters(query?: string): Observable<CharactersInfo> {
     if (!query) {
-      return this.http.get(`${this.BASE_URL}/character`)
-        .pipe(
-          map((response: any) => {
-            return response.results;
-          })
-        );
+      return this.http.get<CharactersInfo>(`${this.BASE_URL}/character`);
     }
-    return this.http.get(`${this.BASE_URL}/character?name=${query}`)
-      .pipe(
-        map((response: any) => {
-          return response.results;
-        })
-      );
+    return this.http.get<CharactersInfo>(`${this.BASE_URL}/character?${query}`);
   }
 
   getCharacterById(id: number): Observable<Character> {

@@ -1,13 +1,8 @@
+import {Info} from "./pagination-info.interface";
+
 export interface EpisodesInfo {
   info:    Info;
   results: Episode[];
-}
-
-export interface Info {
-  count: number;
-  pages: number;
-  next:  string;
-  prev:  null;
 }
 
 export interface Episode {

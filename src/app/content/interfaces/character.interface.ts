@@ -1,14 +1,10 @@
+import {Info} from "./pagination-info.interface";
+
 export interface CharactersInfo {
   info: Info;
   results: Character[];
 }
 
-export interface Info {
-  count: number;
-  pages: number;
-  next: string;
-  prev: null;
-}
 
 export interface Character {
   id: number;

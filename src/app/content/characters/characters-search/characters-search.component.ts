@@ -15,12 +15,18 @@ export class CharactersSearchComponent {
   constructor(private rickAndMortyAPIService: RickAndMortyAPIService) {
   }
 
-  public searchCharacters(query: string): void {
-    if (query.length === 0) {
+  public searchCharacters(name: string): void {
+    if (name.length === 0) {
       return;
     }
-    this.rickAndMortyAPIService.getCharacters(query).subscribe((response: any) => {
-      this.characters = response;
-    });
+    this.rickAndMortyAPIService.getCharacters(`name=${name}`)
+      .subscribe({
+        next: (response) => {
+          this.characters = response.results;
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
   }
 }

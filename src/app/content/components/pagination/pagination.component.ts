@@ -1,24 +1,49 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Info} from "../../interfaces/pagination-info.interface";
 
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
-  styles: [
-  ]
+  styles: [`
+    .page-item {
+      cursor: pointer;
+    }
+  `]
 })
 export class PaginationComponent {
+  public info!: Info;
+  public currentPage: number = 1;
 
-  @Input() public totalPages: number = 0;
-  @Input() public currentPage: number = 0;
-  @Input() public pages: number[] = [];
-  @Output() public pageChanged: EventEmitter<number> = new EventEmitter<number>();
+  @Input()
+  public set pageInfo(value: Info) {
+    this.info = value;
+  }
 
-  constructor() { }
+  @Output() public pageChanged: EventEmitter<string | null> = new EventEmitter<string | null>();
 
-  public changePage(page: number): void {
+  constructor() {
+  }
+
+  public onClick(page: string | null): void {
+    this.currentPage = page ? parseInt(page) : 1;
     this.pageChanged.emit(page);
   }
 
+  public getPreviousPage(): string | null {
+    const page = this.info.prev?.split('?page=')[1];
+    return page ? page : null;
+  }
 
+  public getNextPage(): string | null {
+    const page = this.info.next?.split('?page=')[1];
+    return page ? page : null;
+  }
 
+  get previousPages(): number {
+    return this.currentPage - 1;
+  }
+
+  get nextPages(): number {
+    return this.info.pages - this.currentPage;
+  }
 }
