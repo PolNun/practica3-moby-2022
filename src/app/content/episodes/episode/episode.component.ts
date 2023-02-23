@@ -9,7 +9,7 @@ import {switchMap} from "rxjs";
 @Component({
   selector: 'app-episode',
   templateUrl: './episode.component.html',
-  styleUrls: ['./episode.component.css']
+  styleUrls: []
 })
 export class EpisodeComponent implements OnInit {
   episode!: Episode;

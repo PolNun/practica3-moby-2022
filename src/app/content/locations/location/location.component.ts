@@ -9,7 +9,7 @@ import {LocationsApiService} from "../../services/locations-api.service";
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',
-  styleUrls: ['./location.component.css']
+  styleUrls: []
 })
 export class LocationComponent implements OnInit {
   location!: LocationRickAndMorty;

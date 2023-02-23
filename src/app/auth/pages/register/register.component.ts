@@ -9,7 +9,7 @@ import {HttpErrorResponse} from "@angular/common/http";
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: []
 })
 export class RegisterComponent {
   public regexUsername: RegExp = /^[a-zA-Z0-9_-]{5,15}$/;
