@@ -1,1 +1,31 @@
-<p>locations-search works!</p>
+<h1>{{"Buscar ubicaciones" | uppercase}}</h1>
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <label class="visually-hidden" for="autoSizingInputGroup">Buscar episodio</label>
+      <div class="input-group">
+        <div class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <input #searchInput type="text" class="form-control" id="autoSizingInputGroup"
+               placeholder="Nombre del episodio">
+      </div>
+      <button class="btn btn-success mt-2"
+              type="button"
+              (click)="searchLocations(searchInput.value)">
+        Buscar
+      </button>
+    </div>
+    <div class="col-12 d-flex justify-content-center flex-wrap mb-5">
+      <app-card-template *ngFor="let location of locations;"
+                         [cardTitle]="location.name"
+                         [cardText]="location.type"
+                         [cardDesc1]="'Dimensión: ' + location.dimension"
+                         [cardImgClasses]="['d-none']"
+                         [routerLink]="['../detalles/', location.id]">
+      </app-card-template>
+      <div class="d-flex flex-column align-items-center">
+        <span [ngClass]="{'text-secondary': true, 'shine-text-animation': errorMessage}" *ngIf="locations.length === 0">Probá buscando "Earth".</span>
+        <span class="text-danger" *ngIf="errorMessage">{{errorMessage}}</span>
+      </div>
+    </div>
+  </div>
+</div>

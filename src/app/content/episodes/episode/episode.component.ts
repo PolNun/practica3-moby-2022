@@ -21,6 +21,10 @@ export class EpisodeComponent implements OnInit {
               private activatedRoute: ActivatedRoute) {
   }
 
+  ngOnInit(): void {
+    this.getEpisode();
+  }
+
   getEpisode(): void {
     this.activatedRoute.params
       .pipe(
@@ -47,9 +51,5 @@ export class EpisodeComponent implements OnInit {
 
   getCharacterIdByUrl(characterUrl: string): number {
     return parseInt(characterUrl.split('/')[5]);
-  }
-
-  ngOnInit(): void {
-    this.getEpisode();
   }
 }

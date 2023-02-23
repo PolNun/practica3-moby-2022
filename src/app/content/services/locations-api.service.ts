@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
-import {LocationsInfo} from "../interfaces/location.interface";
+import {LocationRickAndMorty, LocationsInfo} from "../interfaces/location.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class LocationsApiService {
     return this.http.get<LocationsInfo>(`${this.BASE_URL}/location?${query}`);
   }
 
-  getLocationById(id: number): Observable<Location> {
-    return this.http.get<Location>(`${this.BASE_URL}/location/${id}`);
+  getLocationById(id: number): Observable<LocationRickAndMorty> {
+    return this.http.get<LocationRickAndMorty>(`${this.BASE_URL}/location/${id}`);
   }
 }

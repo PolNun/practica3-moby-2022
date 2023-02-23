@@ -44,3 +44,7 @@ label {
 .table-link {
   cursor: pointer;
 }
+
+.char-name:hover {
+  color: var(--main-color);
+}

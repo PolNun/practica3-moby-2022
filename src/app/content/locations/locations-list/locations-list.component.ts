@@ -13,8 +13,11 @@ export class LocationsListComponent implements OnInit {
   public locations: LocationRickAndMorty[] = [];
   public info!: PaginationInfo;
 
-  constructor(private locationsApiService: LocationsApiService,
-              private router: Router) {
+  constructor(private locationsApiService: LocationsApiService) {
+  }
+
+  ngOnInit(): void {
+    this.getLocations();
   }
 
   public getLocations(): void {
@@ -25,10 +28,6 @@ export class LocationsListComponent implements OnInit {
           this.info = response.info;
         }
       });
-  }
-
-  ngOnInit(): void {
-    this.getLocations();
   }
 
   changePage($event: string | null) {

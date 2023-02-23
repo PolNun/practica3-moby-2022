@@ -1,1 +1,26 @@
-<p>location works!</p>
+<div *ngIf="location"
+     class="container bg-light mt-3 mb-3">
+  <div class="row p-2">
+    <div class="col-md-6 col-12">
+      <h3>Información del episodio</h3>
+      <hr>
+      <p><strong>Nombre: </strong>{{location.name}}</p>
+      <p><strong>Fecha de estreno: </strong>{{location.type}}</p>
+      <p><strong>Código de episodio: </strong>{{location.dimension}}</p>
+    </div>
+    <div *ngIf="characters"
+         class="col-md-6 col-12">
+      <h3>Personajes en esta ubicación</h3>
+      <hr>
+      <div class="row">
+        <div class="col-md-6 col-12">
+          <p *ngFor="let character of characters"
+             class="mb-0 table-link char-name"
+             [routerLink]="['../../../personajes/detalles', character.id]">
+            {{character.name}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
