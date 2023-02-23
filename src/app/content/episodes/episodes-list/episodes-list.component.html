@@ -1,1 +1,17 @@
-<p>episodes-list works!</p>
+<h1>{{"Listado de episodios" | uppercase}}</h1>
+<div class="container d-flex justify-content-center flex-wrap mb-5">
+  <app-card-template *ngFor="let episode of episodes;"
+                     [cardTitle]="'Episodio ' + episode.id"
+                     [cardText]="'Nombre: ' + episode.name"
+                     [cardDesc1]="episode.episode"
+                     [cardDesc2]="'Estreno: ' + episode.air_date"
+                     [cardImgClasses]="['d-none']"
+                     [routerLink]="['../detalles/', episode.id]">
+  </app-card-template>
+</div>
+<div class="d-flex justify-content-center">
+  <app-pagination
+    (pageChanged)="changePage($event)"
+    [pageInfo]="info">
+  </app-pagination>
+</div>

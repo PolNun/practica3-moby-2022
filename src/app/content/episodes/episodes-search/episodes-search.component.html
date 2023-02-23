@@ -1,1 +1,32 @@
-<p>episodes-search works!</p>
+<h1>{{"Buscar episodios" | uppercase}}</h1>
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <label class="visually-hidden" for="autoSizingInputGroup">Buscar episodio</label>
+      <div class="input-group">
+        <div class="input-group-text"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <input #searchInput type="text" class="form-control" id="autoSizingInputGroup"
+               placeholder="Nombre del episodio">
+      </div>
+      <button class="btn btn-success mt-2"
+              type="button"
+              (click)="searchEpisodes(searchInput.value)">
+        Buscar
+      </button>
+    </div>
+    <div class="col-12 d-flex justify-content-center flex-wrap mb-5">
+      <app-card-template *ngFor="let episode of episodes;"
+                         [cardTitle]="'Episodio ' + episode.id"
+                         [cardText]="'Nombre: ' + episode.name"
+                         [cardDesc1]="episode.episode"
+                         [cardDesc2]="'Estreno: ' + episode.air_date"
+                         [cardImgClasses]="['d-none']"
+                         [routerLink]="['../detalles/', episode.id]">
+      </app-card-template>
+      <div class="d-flex flex-column align-items-center">
+        <span [ngClass]="{'text-secondary': true, 'shine-text-animation': errorMessage}" *ngIf="episodes.length === 0">Probá buscando "Pilot".</span>
+        <span class="text-danger" *ngIf="errorMessage">{{errorMessage}}</span>
+      </div>
+    </div>
+  </div>
+</div>

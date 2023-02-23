@@ -8,10 +8,12 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 export class CardTemplateComponent {
   @Input() public cardImgAlt: string = '';
   @Input() public cardImgTitle: string = '';
-  @Input() public cardText: string = '';
+  @Input() public cardImgClasses: string[] = ['card-img-top'];
+  @Input() public cardTitle: string = '';
   @Input() public cardImgSrc: string = '';
-  @Input() public isHidden: string = '';
-  @Input() public detailsLink: string = '';
+  @Input() cardText: string = '';
+  @Input() cardDesc1: string = '';
+  @Input() cardDesc2: string = '';
   @Output() cardClick = new EventEmitter();
 
   constructor() {

@@ -17,12 +17,15 @@
     <div class="col-12 d-flex justify-content-center flex-wrap mb-5">
       <app-card-template *ngFor="let character of characters;"
                          [cardImgSrc]="character.image"
-                         [cardText]="character.name"
+                         [cardTitle]="character.name"
                          [cardImgAlt]="character.name"
                          [cardImgTitle]="character.name"
-                         detailsLink="{{characterLink + character.id}}">
+                         [routerLink]="['../detalles/', character.id]">
       </app-card-template>
-      <span class="text-secondary" *ngIf="characters.length === 0">Probá buscando "Rick".</span>
+      <div class="d-flex flex-column align-items-center">
+        <span [ngClass]="{'text-secondary': true, 'shine-text-animation': errorMessage}" *ngIf="characters.length === 0">Probá buscando "Rick".</span>
+        <span class="text-danger" *ngIf="errorMessage">{{errorMessage}}</span>
+      </div>
     </div>
   </div>
 </div>

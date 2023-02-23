@@ -18,7 +18,7 @@ export class LocationsApiService {
     if (!query) {
       return this.http.get<LocationsInfo>(`${this.BASE_URL}/location`);
     }
-    return this.http.get<LocationsInfo>(`${this.BASE_URL}/location?name=${query}`);
+    return this.http.get<LocationsInfo>(`${this.BASE_URL}/location?${query}`);
   }
 
   getLocationById(id: number): Observable<Location> {

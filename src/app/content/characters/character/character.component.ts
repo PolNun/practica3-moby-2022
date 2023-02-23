@@ -15,6 +15,7 @@ export class CharacterComponent implements OnInit {
 
   character!: Character;
   episode!: Episode;
+  episodes: Episode[] = [];
 
   mapGender = {
     'Male': 'Masculino',
@@ -37,9 +38,7 @@ export class CharacterComponent implements OnInit {
         next: (character: Character) => {
           this.character = character;
           if (character.id <= 51) this.getEpisode();
-        },
-        error: (err) => {
-          console.log(err);
+          this.getAllEpisodesOnCharacter();
         }
       });
   }
@@ -52,14 +51,27 @@ export class CharacterComponent implements OnInit {
       .subscribe({
         next: (episode: Episode) => {
           this.episode = episode;
-        },
-        error: (err) => {
-          console.log(err);
         }
       });
+  }
+
+  getEpisodeIdByUrl(episodeUrl: string): number {
+    return parseInt(episodeUrl.split('/')[5]);
+  }
+
+  private getAllEpisodesOnCharacter(): void {
+    this.character.episode.forEach((episodeUrl: string) => {
+      this.episodesApiService.getEpisodeById(this.getEpisodeIdByUrl(episodeUrl))
+        .subscribe({
+          next: (episode: Episode) => {
+            this.episodes.push(episode);
+          }
+        });
+    });
   }
 
   ngOnInit(): void {
     this.getCharacter();
   }
+
 }

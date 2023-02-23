@@ -2,10 +2,10 @@ import {PaginationInfo} from "./pagination-info.interface";
 
 export interface LocationsInfo {
   info: PaginationInfo;
-  results: Location[];
+  results: LocationRickAndMorty[];
 }
 
-export interface Location {
+export interface LocationRickAndMorty {
   id: number;
   name: string;
   type: string;

@@ -31,11 +31,16 @@
           <th scope="row">Cantidad de episodios</th>
           <td>{{character.episode.length}}</td>
         </tr>
-        <tr *ngIf="episode">
-          <th>Primer episodio</th>
-          <td>{{episode.name}}</td>
-        </tr>
         </tbody>
+      </table>
+      <table class="table">
+        <tr>
+          <th scope="row" class="text-center p-2">Episodios donde aparece</th>
+        </tr>
+        <tr *ngFor="let episode of episodes;">
+          <td [routerLink]="['../../../episodios/detalles/', episode.id]"
+          class="table-link">{{episode.name}}</td>
+        </tr>
       </table>
     </div>
   </div>

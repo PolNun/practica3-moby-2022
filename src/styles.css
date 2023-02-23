@@ -24,3 +24,23 @@ body {
 label {
   font-size: 14px;
 }
+
+.shine-text-animation {
+  animation: shine 2s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0% {
+    text-shadow: 0 0 5px var(--almost-white);
+  }
+  50% {
+    text-shadow: 0 0 10px var(--secondary-color);
+  }
+  100% {
+    text-shadow: 0 0 5px var(--almost-white);
+  }
+}
+
+.table-link {
+  cursor: pointer;
+}

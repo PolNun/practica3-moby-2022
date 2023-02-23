@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {map, Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {Episode, EpisodesInfo} from "../interfaces/episode.interface";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
@@ -17,7 +17,7 @@ export class EpisodesApiService {
     if (!query) {
       return this.http.get<EpisodesInfo>(`${this.BASE_URL}/episode`);
     }
-    return this.http.get<EpisodesInfo>(`${this.BASE_URL}/episode?name=${query}`);
+    return this.http.get<EpisodesInfo>(`${this.BASE_URL}/episode?${query}`);
   }
 
   getEpisodeById(id: number): Observable<Episode> {

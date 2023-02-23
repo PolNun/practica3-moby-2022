@@ -2,10 +2,10 @@
 <div class="container d-flex justify-content-center flex-wrap mb-5">
   <app-card-template *ngFor="let character of characters;"
                      [cardImgSrc]="character.image"
-                     [cardText]="character.name"
+                     [cardTitle]="character.name"
                      [cardImgAlt]="character.name"
                      [cardImgTitle]="character.name"
-                     detailsLink="{{'/contenido/personajes/detalles/' + character.id}}">
+                     [routerLink]="['../detalles/', character.id]">
   </app-card-template>
 </div>
 <div class="d-flex justify-content-center">

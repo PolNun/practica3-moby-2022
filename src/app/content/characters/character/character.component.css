@@ -17,6 +17,12 @@ td {
   width: 60%;
 }
 
+td:hover {
+  background-color: var(--almost-black);
+  color: var(--almost-white);
+}
+
+
 .character-icon {
   border-radius: 50%;
   border: 5px solid var(--almost-white);

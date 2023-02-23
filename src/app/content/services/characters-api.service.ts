@@ -16,6 +16,14 @@ export class CharactersApiService {
   getCharacters(query?: string): Observable<CharactersInfo> {
     if (!query) {
       return this.http.get<CharactersInfo>(`${this.BASE_URL}/character`);
+      // .pipe(
+      //   map((charactersInfo: CharactersInfo) => {
+      //       return {
+      //         ...charactersInfo,
+      //         results: charactersInfo.results.slice(0, 10)
+      //       }
+      //     }
+      //   ));
     }
     return this.http.get<CharactersInfo>(`${this.BASE_URL}/character?${query}`);
   }

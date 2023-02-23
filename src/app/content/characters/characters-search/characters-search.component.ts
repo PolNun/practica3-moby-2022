@@ -10,22 +10,22 @@ import {CharactersApiService} from "../../services/characters-api.service";
 export class CharactersSearchComponent {
 
   public characters: Character[] = [];
-  characterLink: string = '/contenido/personajes/detalles/';
+  public errorMessage: string = '';
 
   constructor(private rickAndMortyAPIService: CharactersApiService) {
   }
 
   public searchCharacters(name: string): void {
-    if (name.length === 0) {
-      return;
-    }
+    if (name.length === 0) return;
+
     this.rickAndMortyAPIService.getCharacters(`name=${name}`)
       .subscribe({
         next: (response) => {
           this.characters = response.results;
         },
-        error: (err) => {
-          console.log(err);
+        error: () => {
+          this.characters = [];
+          this.errorMessage = "No se encontraron personajes.";
         }
       });
   }

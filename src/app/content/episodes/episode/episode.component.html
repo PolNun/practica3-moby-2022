@@ -1,1 +1,26 @@
-<p>episode works!</p>
+<div *ngIf="episode"
+     class="container bg-light mt-3 mb-3">
+  <div class="row p-2">
+    <div class="col-md-6 col-12">
+      <h3>Información del episodio</h3>
+      <hr>
+      <p><strong>Nombre: </strong>{{episode.name}}</p>
+      <p><strong>Fecha de estreno: </strong>{{episode.air_date}}</p>
+      <p><strong>Código de episodio: </strong>{{episode.episode}}</p>
+    </div>
+    <div *ngIf="characters"
+         class="col-md-6 col-12">
+      <h3>Personajes en este episodio</h3>
+      <hr>
+      <div class="row">
+        <div class="col-md-6 col-12">
+          <p *ngFor="let character of characters"
+             class="mb-0 table-link char-name"
+             [routerLink]="['../../../personajes/detalles', character.id]">
+            {{character.name}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
