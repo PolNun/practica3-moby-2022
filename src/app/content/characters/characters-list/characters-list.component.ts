@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {RickAndMortyAPIService} from "../../services/rick-and-morty-api.service";
+import {CharactersApiService} from "../../services/characters-api.service";
 import {Router} from "@angular/router";
 import {Character, CharactersInfo} from "../../interfaces/character.interface";
-import {Info} from "../../interfaces/pagination-info.interface";
+import {PaginationInfo} from "../../interfaces/pagination-info.interface";
 
 @Component({
   selector: 'app-characters-list',
@@ -11,10 +11,9 @@ import {Info} from "../../interfaces/pagination-info.interface";
 })
 export class CharactersListComponent implements OnInit {
   public characters: Character[] = [];
+  public info!: PaginationInfo;
 
-  public info!: Info;
-
-  constructor(private rickAndMortyAPIService: RickAndMortyAPIService,
+  constructor(private rickAndMortyAPIService: CharactersApiService,
               private router: Router) {
   }
 

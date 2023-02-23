@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {switchMap} from "rxjs";
 import {Character} from "../../interfaces/character.interface";
-import {RickAndMortyAPIService} from "../../services/rick-and-morty-api.service";
+import {CharactersApiService} from "../../services/characters-api.service";
 import {Episode} from "../../interfaces/episode.interface";
+import {EpisodesApiService} from "../../services/episodes-api.service";
 
 @Component({
   selector: 'app-character',
@@ -22,14 +23,15 @@ export class CharacterComponent implements OnInit {
     'unknown': 'Desconocido'
   }
 
-  constructor(private rickAndMortyAPIService: RickAndMortyAPIService,
+  constructor(private charactersApiService: CharactersApiService,
+              private episodesApiService: EpisodesApiService,
               private activatedRoute: ActivatedRoute) {
   }
 
   getCharacter(): void {
     this.activatedRoute.params
       .pipe(
-        switchMap(({id}) => this.rickAndMortyAPIService.getCharacterById(id))
+        switchMap(({id}) => this.charactersApiService.getCharacterById(id))
       )
       .subscribe({
         next: (character: Character) => {
@@ -45,7 +47,7 @@ export class CharacterComponent implements OnInit {
   getEpisode(): void {
     this.activatedRoute.params
       .pipe(
-        switchMap(({id}) => this.rickAndMortyAPIService.getEpisodeById(id))
+        switchMap(({id}) => this.episodesApiService.getEpisodeById(id))
       )
       .subscribe({
         next: (episode: Episode) => {

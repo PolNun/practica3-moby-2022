@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Character} from "../../interfaces/character.interface";
-import {RickAndMortyAPIService} from "../../services/rick-and-morty-api.service";
+import {CharactersApiService} from "../../services/characters-api.service";
 
 @Component({
   selector: 'app-characters-search',
@@ -12,7 +12,7 @@ export class CharactersSearchComponent {
   public characters: Character[] = [];
   characterLink: string = '/contenido/personajes/detalles/';
 
-  constructor(private rickAndMortyAPIService: RickAndMortyAPIService) {
+  constructor(private rickAndMortyAPIService: CharactersApiService) {
   }
 
   public searchCharacters(name: string): void {

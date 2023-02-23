@@ -1,7 +1,7 @@
-import {Info} from "./pagination-info.interface";
+import {PaginationInfo} from "./pagination-info.interface";
 
 export interface CharactersInfo {
-  info: Info;
+  info: PaginationInfo;
   results: Character[];
 }
 

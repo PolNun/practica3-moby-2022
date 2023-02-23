@@ -1,7 +1,7 @@
-import {Info} from "./pagination-info.interface";
+import {PaginationInfo} from "./pagination-info.interface";
 
 export interface LocationsInfo {
-  info: Info;
+  info: PaginationInfo;
   results: Location[];
 }
 

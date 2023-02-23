@@ -1,1 +1,23 @@
-<p>pagination works!</p>
+<nav *ngIf="info">
+  <ul class="pagination justify-content-center">
+    <li class="page-item" [ngClass]="{'disabled': info.prev === null}"
+        (click)="onClick(getPreviousPage())">
+      <a class="page-link">
+        Anterior
+        <span>
+          ({{previousPages}})
+        </span>
+      </a>
+    </li>
+    <li class="page-item">
+      <a class="page-link"
+         [ngClass]="{'disabled': info.next === null}"
+         (click)="onClick(getNextPage())">
+        Siguiente
+        <span>
+          ({{nextPages}})
+        </span>
+      </a>
+    </li>
+  </ul>
+</nav>

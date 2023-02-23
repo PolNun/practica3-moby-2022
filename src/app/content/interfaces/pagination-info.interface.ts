@@ -1,4 +1,4 @@
-export interface Info {
+export interface PaginationInfo {
   count: number;
   pages: number;
   next: null | string;
